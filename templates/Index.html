@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <form method="POST" action="/upload" enctype="multipart/form-data">
+        <h1>Upload New File</h1>
+        <label for="file-upload" class="custom-file-upload">
+            Choose File
+        </label>
+        <input id="file-upload" type="file" name="file">
+        <span id="file-chosen">No file chosen</span>
+        <input type="submit" value="Upload">
+    </form>
+
+    <script>
+        const fileInput = document.getElementById('file-upload');
+        const fileChosen = document.getElementById('file-chosen');
+
+        fileInput.addEventListener('change', function(){
+            fileChosen.textContent = this.files[0].name;
+        });
+    </script>
+</body>
+</html>
